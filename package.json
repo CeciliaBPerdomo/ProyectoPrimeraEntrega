@@ -1,0 +1,24 @@
+{
+  "name": "proyectoprimeraentrega",
+  "version": "1.0.0",
+  "description": "Primera entrega proyecto e-commerce",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CeciliaBPerdomo/ProyectoPrimeraEntrega.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CeciliaBPerdomo/ProyectoPrimeraEntrega/issues"
+  },
+  "homepage": "https://github.com/CeciliaBPerdomo/ProyectoPrimeraEntrega#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
