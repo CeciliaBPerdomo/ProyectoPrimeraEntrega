@@ -22,5 +22,4 @@ const prodDisponibles = async () => {
     return await nuevoContenedor.leer()
 }
 
-
 module.exports = prodDisponibles

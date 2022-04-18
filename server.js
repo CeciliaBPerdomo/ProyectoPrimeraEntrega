@@ -4,19 +4,15 @@ npm i
 npm install express
 */
 
-const container = require('./contenedor')
-const express = require('express')
-const app = express()
+const express = require ('express')
+const routes = require('./routes')
 
-const prodDisponibles = require('./testproductos')
+const app = express()
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-/* Mostrar productos */
-app.get('/', async (req, res) => {
-    res.send(await prodDisponibles())
-})
+app.use(express.static('public'))
+app.use('/productos', routes)
 
 /* Server listen */
 const PORT = process.env.PORT || 8080
