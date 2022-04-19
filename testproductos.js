@@ -26,5 +26,5 @@ const guardarProductos = async (producto) => {
     return await nuevoContenedor.escribir(producto)
 }
 
-module.exports = prodDisponibles
+module.exports = prodDisponibles, guardarProductos
 //module.exports = guardarProductos
