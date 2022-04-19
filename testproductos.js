@@ -22,4 +22,9 @@ const prodDisponibles = async () => {
     return await nuevoContenedor.leer()
 }
 
+const guardarProductos = async (producto) => {
+    return await nuevoContenedor.escribir(producto)
+}
+
 module.exports = prodDisponibles
+//module.exports = guardarProductos
