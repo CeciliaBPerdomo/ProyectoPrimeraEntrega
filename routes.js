@@ -3,8 +3,11 @@ const res = require('express/lib/response');
 const routerProductos = express.Router()
 
 const container = require('./contenedor');
+
 const prodDisponibles = require('./testproductos')
 const guardarProductos = require('./testproductos')
+
+const datos = new container('./productos.txt')
 
 /* Mostrar productos */
 routerProductos.get('/', async (req, res) => {
@@ -26,10 +29,11 @@ routerProductos.get('/:id', async(req, res) =>{
 routerProductos.post('/guardar', async(req, res) => {
     let prod = req.body
     let productos = await prodDisponibles()
-    prod.id = productos[productos.length - 1].id + 1
+    /*prod.id = productos[productos.length - 1].id + 1*/
     prod.timestamp = Date.now()
     console.log(prod)
-    await guardarProductos(prod)
+    datos.escribir(prod)
+    //await guardarProductos(prod)
     /*let productos = req.body
     productos.push(req.body)
     res.json(productos)*/
