@@ -4,6 +4,7 @@ const routerProductos = express.Router()
 
 const container = require('./contenedor');
 const prodDisponibles = require('./testproductos')
+const guardarProductos = require('./testproductos')
 
 /* Mostrar productos */
 routerProductos.get('/', async (req, res) => {
@@ -23,13 +24,12 @@ routerProductos.get('/:id', async(req, res) =>{
 
 /*Guardar*/
 routerProductos.post('/guardar', async(req, res) => {
-//    console.log(req.body)
     let prod = req.body
     let productos = await prodDisponibles()
     prod.id = productos[productos.length - 1].id + 1
     prod.timestamp = Date.now()
     console.log(prod)
-    await guardarProductos(prod)    
+    await guardarProductos(prod)
     /*let productos = req.body
     productos.push(req.body)
     res.json(productos)*/
