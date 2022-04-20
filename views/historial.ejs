@@ -1,0 +1,11 @@
+<% if(productos.length > 0){ %>
+    <div class="card" style="width: 18rem;">
+    <% for (const producto of productos) {%>
+        <img src="<%=producto.foto%>" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title"><%=producto.nombre%></h5>
+            <p class="card-text"><%=producto.descripcion%></p>
+        </div>
+        
+    </div>
+<%};%>
