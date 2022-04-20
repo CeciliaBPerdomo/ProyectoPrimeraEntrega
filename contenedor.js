@@ -19,9 +19,9 @@ class container{
     async escribir(producto){
         try{
             const data = await this.leer()
-            let contProd = JSON.parse(data)
+            //let contProd = JSON.parse(data)
             let ultId = 0
-            const cantidadItems = contProd.length
+            const cantidadItems = JSON.parse(data.length) //contProd.length
             console.log(cantidadItems)
 
             if(cantidadItems !== 0){
