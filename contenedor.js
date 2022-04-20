@@ -9,7 +9,8 @@ class container{
     async leer(){
         try{
             let contenido = await fs.promises.readFile(this.filename, 'utf-8')
-            return JSON.parse(contenido)
+            //return JSON.parse(contenido)
+            return contenido
         } catch(error){
             throw new Error(error)
         }
@@ -18,9 +19,9 @@ class container{
     async escribir(producto){
         try{
             const data = await this.leer()
-            const contProd = JSON.parse(data)
+            let contProd = JSON.parse(data)
             let ultId = 0
-            const cantidadItems = contProd.length;
+            const cantidadItems = contProd.length
             console.log(cantidadItems)
 
             if(cantidadItems !== 0){
