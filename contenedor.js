@@ -39,16 +39,52 @@ class container{
 
      async borrarPorId(id) {
         try{
-            //const contenido = await this.leer();
-            const contenidoParseado = await this.leer() //JSON.parse(contenido);
-            const elementos = contenidoParseado.filter(e => e.id != id);
-            //await this.escribir(JSON.stringify(elementos));
+            const contenidoParseado = await this.leer() 
+            const data = contenidoParseado.filter(e => e.id != id);
             await fs.promises.writeFile(this.filename, json.stringify(data))  
             let contenidoNuevo = await this.leer();
             return contenidoNuevo;
          }catch(error){
              throw new Error(error);
          }
+     }
+
+     async modificarPorId(producto, id){
+        try{
+            const contenidoParseado = await this.leer() 
+            const elementos = contenidoParseado.filter(e => e.id == id)
+            
+            if(producto.nombre){
+                elementos.nombre = producto.nombre
+            }
+
+            if(producto.descripcion){
+                elementos.descripcion = producto.descripcion
+            }
+
+            if(producto.codigo){
+                elementos.codigo = producto.codigo
+            }
+
+            if(producto.foto){
+                elementos.foto = producto.foto
+            }
+
+            if(producto.stock){
+                elementos.stock = producto.stock
+            }
+
+            if(producto.precio){
+                elementos.precio = producto.stock
+            }
+
+            await fs.promises.writeFile(this.filename, json.stringify(elementos))  
+            let contenidoNuevo = await this.leer();
+            return contenidoNuevo;
+
+        }catch(error){
+            throw new Error(error)
+        }
      }
 }
 
