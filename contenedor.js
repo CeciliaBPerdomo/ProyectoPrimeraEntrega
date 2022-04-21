@@ -41,8 +41,9 @@ class container{
         try{
             //const contenido = await this.leer();
             const contenidoParseado = await this.leer() //JSON.parse(contenido);
-            const elementos = contenidoParseado.filter(e => e.id !== id);
-            await this.escribir(JSON.stringify(elementos));
+            const elementos = contenidoParseado.filter(e => e.id != id);
+            //await this.escribir(JSON.stringify(elementos));
+            await fs.promises.writeFile(this.filename, json.stringify(data))  
             let contenidoNuevo = await this.leer();
             return contenidoNuevo;
          }catch(error){

@@ -29,14 +29,13 @@ routerProductos.post('/guardar', async(req, res) => {
     prod.timestamp = Date.now()
     console.log(prod)
     datos.escribir(prod)
-    res.json(await prodDisponibles())
+    res.redirect('/productos')
 })
 
 /* Borrar por id*/
 routerProductos.delete('/borrar/:id', async(req, res) =>{
     const { id } = req.params
     datos.borrarPorId(id)
-    console.log('Producto borrado, id: ' + id)
     res.json(await prodDisponibles())
 }) 
 
