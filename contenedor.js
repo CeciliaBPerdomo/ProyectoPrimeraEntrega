@@ -30,12 +30,24 @@ class container{
             producto['id'] = ultId + 1
             data.push(producto)
 
-            /*const contenido = await fs.promises.writeFile(this.filename, JSON.stringify(dato));*/
             data = JSON.stringify(data)
             await fs.promises.writeFile(this.filename, data)           
         } catch(error){
             console.log(error);
         }
+     }
+
+     async borrarPorId(id) {
+        try{
+            //const contenido = await this.leer();
+            const contenidoParseado = await this.leer() //JSON.parse(contenido);
+            const elementos = contenidoParseado.filter(e => e.id !== id);
+            await this.escribir(JSON.stringify(elementos));
+            let contenidoNuevo = await this.leer();
+            return contenidoNuevo;
+         }catch(error){
+             throw new Error(error);
+         }
      }
 }
 

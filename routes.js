@@ -11,7 +11,6 @@ const datos = new container('./productos.txt')
 
 /* Mostrar productos */
 routerProductos.get('/', async (req, res) => {
-   //res.json(await prodDisponibles())
    let productos = await prodDisponibles()
    res.render('productos', { productos })
 })
@@ -33,6 +32,13 @@ routerProductos.post('/guardar', async(req, res) => {
     res.json(await prodDisponibles())
 })
 
+/* Borrar por id*/
+routerProductos.delete('/borrar/:id', async(req, res) =>{
+    const { id } = req.params
+    datos.borrarPorId(id)
+    console.log('Producto borrado, id: ' + id)
+    res.json(await prodDisponibles())
+}) 
 
 module.exports = routerProductos
 /* Contenedor */
