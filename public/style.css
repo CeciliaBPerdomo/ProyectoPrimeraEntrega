@@ -1,0 +1,17 @@
+ul {
+    margin:0;
+    padding:0;
+}
+
+ul li{
+    display:block;
+    float:left;
+    padding:0 10px;
+    text-decoration: none;
+}
+
+.divHistorial{
+    display: grid;
+    position: relative;
+    width: 30%;
+}

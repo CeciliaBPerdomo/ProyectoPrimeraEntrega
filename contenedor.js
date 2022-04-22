@@ -9,16 +9,16 @@ class container{
         try{
             let contenido = await fs.promises.readFile(this.filename, 'utf-8')
             return JSON.parse(contenido)
-            //return contenido
         } catch(error){
             throw new Error(error)
         }
     }
 
+    // guardar productos
     async escribir(producto){
         try{
             const fetch = await this.leer()
-            let data = fetch//JSON.parse(fetch)
+            let data = fetch
             let ultId = 0
             const cantidadItems = data.length
             console.log('Data: ', data)
@@ -37,6 +37,7 @@ class container{
         }
      }
 
+     // borrar por id un producto
      async borrarPorId(id) {
         try{
             const contenidoParseado = await this.leer() 
@@ -49,6 +50,7 @@ class container{
          }
      }
 
+     // modificar Por Id un product
      async modificarPorId(producto, id){
         try{
             const contenidoParseado = await this.leer() 
