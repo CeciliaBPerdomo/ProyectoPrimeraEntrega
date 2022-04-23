@@ -37,7 +37,7 @@ routerProductos.delete('/borrar/:id', async(req, res) =>{
     const { id } = req.params
     datos.borrarPorId(id)
     res.json(await prodDisponibles())
-    res.send('/productos')
+    //res.send('/productos')
 }) 
 
 /* Modificar un producto */
@@ -45,7 +45,7 @@ routerProductos.put('/modificar/:id', async(req, res) => {
     let prodNuevo = req.body
     const { id } = req.params
     datos.modificarPorId(prodNuevo, id)
-    res.redirect('/productos')
+    //res.redirect('/productos')
 })
 
 module.exports = routerProductos

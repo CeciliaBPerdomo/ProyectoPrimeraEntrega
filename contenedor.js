@@ -37,16 +37,26 @@ class container{
         }
      }
 
+     // escribir datos
+     async escribirborrados(dato){
+         try{
+            const contenido = await fs.promises.writeFile(this.filename, dato)
+            return contenido
+         }catch(error){
+            throw new Error(error)
+         }
+     }
+
      // borrar por id un producto
      async borrarPorId(id) {
         try{
-            const contenidoParseado = await this.leer() 
-            const data = contenidoParseado.filter(e => e.id != id);
-            await fs.promises.writeFile(this.filename, JSON.stringify(data))  
-            let contenidoNuevo = await this.leer();
-            return contenidoNuevo;
+            const fetch = await this.leer() 
+            const data = fetch.filter(e => e.id != id)
+            await this.escribirborrados(data)
+            let contenidoNuevo = await this.leer()
+            return contenidoNuevo
          }catch(error){
-             throw new Error(error);
+             throw new Error(error)
          }
      }
 
@@ -54,35 +64,35 @@ class container{
      async modificarPorId(producto, id){
         try{
             const contenidoParseado = await this.leer() 
-            const elementos = contenidoParseado.filter(e => e.id == id)
+            const elementos = contenidoParseado.find(e => e.id == id)
+            const index = contenidoParseado.indexOf(elementos) 
             
             if(producto.nombre){
-                elementos.nombre = producto.nombre
+                contenidoParseado[index].nombre = producto.nombre
             }
 
             if(producto.descripcion){
-                elementos.descripcion = producto.descripcion
+                contenidoParseado[index].descripcion = producto.descripcion
             }
 
             if(producto.codigo){
-                elementos.codigo = producto.codigo
+                contenidoParseado[index].codigo = producto.codigo
             }
 
             if(producto.foto){
-                elementos.foto = producto.foto
+                contenidoParseado[index].foto = producto.foto
             }
 
             if(producto.stock){
-                elementos.stock = producto.stock
+                contenidoParseado[index].stock = producto.stock
             }
 
             if(producto.precio){
-                elementos.precio = producto.stock
+                contenidoParseado[index].precio = producto.stock
             }
-
-            await fs.promises.writeFile(this.filename, JSON.stringify(elementos))  
-            let contenidoNuevo = await this.leer();
-            return contenidoNuevo;
+            await fs.promises.writeFile(this.filename, JSON.stringify(contenidoParseado))  
+            //fs.writeFileSync(this.filename, JSON.stringify(contenidoParseado))
+            //return contenidoParseado[index]
 
         }catch(error){
             throw new Error(error)
