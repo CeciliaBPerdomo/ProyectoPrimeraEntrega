@@ -37,7 +37,7 @@ routerProductos.delete('/borrar/:id', async(req, res) =>{
     const { id } = req.params
     datos.borrarPorId(id)
     res.json(await prodDisponibles())
-    res.redirect('/productos')
+    res.send('/productos')
 }) 
 
 /* Modificar un producto */

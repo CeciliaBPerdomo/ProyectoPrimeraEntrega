@@ -10,8 +10,18 @@ ul li{
     text-decoration: none;
 }
 
-.divHistorial{
-    display: grid;
-    position: relative;
-    width: 30%;
+.container {
+    display: flex;
+    text-align: center;
+}
+
+.card{
+    width: 270px;
+    height: 430px;
+    margin: 10px;
+    border-radius: 15px;
+}
+
+.footer{
+    text-align: center;
 }

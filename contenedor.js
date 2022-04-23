@@ -42,7 +42,7 @@ class container{
         try{
             const contenidoParseado = await this.leer() 
             const data = contenidoParseado.filter(e => e.id != id);
-            await fs.promises.writeFile(this.filename, json.stringify(data))  
+            await fs.promises.writeFile(this.filename, JSON.stringify(data))  
             let contenidoNuevo = await this.leer();
             return contenidoNuevo;
          }catch(error){
@@ -80,7 +80,7 @@ class container{
                 elementos.precio = producto.stock
             }
 
-            await fs.promises.writeFile(this.filename, json.stringify(elementos))  
+            await fs.promises.writeFile(this.filename, JSON.stringify(elementos))  
             let contenidoNuevo = await this.leer();
             return contenidoNuevo;
 
