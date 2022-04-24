@@ -1,0 +1,6 @@
+<% if(carrito.length > 0){ %>
+    <% for (const item of carrito) {%>
+        <p>Tu carrito es el: <strong><%=item.id%></strong>. Su timestamp es: <strong><%=item.timestamp%></strong></p>
+    
+    <%};%>
+<%};%>
