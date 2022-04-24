@@ -31,17 +31,48 @@ class ContainerCarrito {
         }    
     }
 
-    /*
-    async mostrarPorId(id){
+    // borra el carrito completo
+    async borrarPorId(id){
         try {
+            const carritos = await this.leer()
+            const carrito = carritos.find(carrito => carrito.id === id)
+            const index = carritos.indexOf(carrito)
 
+            carritos.splice(index, 1)
+            await  fs.promises.writeFile(this.filename, JSON.stringify(carritos))
         } catch(error) {
             throw new Error(error)
         }
-    }*/
+    }
+
+    // Agrega un producto al carrito 
+    async agregarProducto(id, producto){
+        try{
+            const carritos = await this.leer()
+            const carrito = carritos.find(carrito => carrito.id === id)
+            carrito.producto.push(producto)
+            await fs.promises.writeFile(this.filename, JSON.stringify(carritos))
+            console.log(carrito)
+        } catch(error){
+            throw new Error(error)
+        }
+    }
+
+    async borrarProducto(id, prodId){
+        try{
+            const carritos = await this.leer()
+            const carrito = carritos.find(carrito => carrito.id === id)
+            const producto = carrito.productos.find(producto => producto.id == prodId)
+            const index = carrito.productos.indexOf(producto)
+
+            carrito.productos.splice(index, 1)
+            await fs.promises.writeFile(this.filename, JSON.stringify(carritos))
+            console.log(carrito)
+        }catch(error){
+            throw new Error(error)
+        }
+    }
 
 }
-
-
 
 module.exports = ContainerCarrito
