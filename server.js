@@ -21,7 +21,7 @@ app.set('views', './views')
 app.set('view engine', 'ejs')
 
 app.use('/productos', routes)
-//app.use('/carrito', routesCarrito)
+app.use('/carrito', routesCarrito)
 
 /* Server listen */
 const PORT = process.env.PORT || 8080

@@ -24,3 +24,5 @@ routerCarrito.delete('/:id/productos/:idprod', async(req, res) => {
 routerCarrito.put('/:id/productos/:idprod', async(req, res) => {
 
 })
+
+module.exports = routerCarrito

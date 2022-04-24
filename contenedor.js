@@ -37,22 +37,16 @@ class container{
         }
      }
 
-     // escribir datos
-     async escribirborrados(dato){
-         try{
-            const contenido = await fs.promises.writeFile(this.filename, dato)
-            return contenido
-         }catch(error){
-            throw new Error(error)
-         }
-     }
-
      // borrar por id un producto
      async borrarPorId(id) {
         try{
             const fetch = await this.leer() 
-            const data = fetch.filter(e => e.id != id)
-            await this.escribirborrados(data)
+            const data = fetch.find(e => e.id == id)
+            const index = fetch.indexOf(data)
+
+            fetch.splice(index, 1)
+            await fs.promises.writeFile(this.filename, JSON.stringify(fetch))
+
             let contenidoNuevo = await this.leer()
             return contenidoNuevo
          }catch(error){
@@ -91,9 +85,6 @@ class container{
                 contenidoParseado[index].precio = producto.stock
             }
             await fs.promises.writeFile(this.filename, JSON.stringify(contenidoParseado))  
-            //fs.writeFileSync(this.filename, JSON.stringify(contenidoParseado))
-            //return contenidoParseado[index]
-
         }catch(error){
             throw new Error(error)
         }

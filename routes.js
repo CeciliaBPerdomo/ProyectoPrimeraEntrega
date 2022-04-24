@@ -5,8 +5,6 @@ const routerProductos = express.Router()
 const container = require('./contenedor');
 
 const prodDisponibles = require('./testproductos')
-//const guardarProductos = require('./testproductos')
-
 const datos = new container('./productos.txt')
 
 /* Mostrar productos */
@@ -49,5 +47,3 @@ routerProductos.put('/modificar/:id', async(req, res) => {
 })
 
 module.exports = routerProductos
-/* Contenedor */
-//module.exports = container;
